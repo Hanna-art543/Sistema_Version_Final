@@ -1,4 +1,4 @@
-public class MatriculaExtraordinaria extends matricula {
+public class MatriculaExtraordinaria extends Matricula {
     private String motivo;
     private double recargo;
     public MatriculaExtraordinaria(String ID, String fecha, Alumno alumno,
@@ -7,10 +7,18 @@ public class MatriculaExtraordinaria extends matricula {
         this.motivo = motivo;
         this.recargo = recargo;
     }
-    public String getMotivo() { return motivo; }
-    public void setMotivo(String motivo) { this.motivo = motivo; }
-    public double getRecargo() { return recargo; }
-    public void setRecargo(double recargo) { this.recargo = recargo; }
+    public String getMotivo() { 
+        return motivo; 
+    }
+    public void setMotivo(String motivo) { 
+        this.motivo = motivo; 
+    }
+    public double getRecargo() { 
+        return recargo; 
+    }
+    public void setRecargo(double recargo) { 
+        this.recargo = recargo; 
+    }
     public void registrarMatricula(Alumno a, Carrera c) {
         if (a == null || c == null) {
             System.out.println("Datos inválidos para matrícula extraordinaria.");
