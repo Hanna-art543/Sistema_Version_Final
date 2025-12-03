@@ -55,19 +55,19 @@ public class Principal {
                 }
             } catch (ExcepcionDatoInvalido e) {
                 // Maneja la excepción personalizada y pide reingreso
-                System.out.println("🛑 ERROR DE DATO INVÁLIDO: " + e.getMessage());
+                System.out.println("ERROR DE DATO INVÁLIDO: " + e.getMessage());
                 manejarReingreso(e.getTipoError());
             } catch (InputMismatchException e) {
                 // Maneja si se ingresa texto cuando se esperaba un número (ej: double)
                 scanner.nextLine(); 
-                System.out.println("🛑 ERROR DE FORMATO: Se esperaba un dato numérico.");
+                System.out.println("ERROR DE FORMATO: Se esperaba un dato numérico.");
                 manejarReingreso(0); // Pide reingresar en general
             } catch (IllegalArgumentException e) {
                 // Captura la excepción lanzada desde la clase Nota
-                System.out.println("🛑 ERROR DE VALOR: " + e.getMessage());
+                System.out.println("ERROR DE VALOR: " + e.getMessage());
                 manejarReingreso(2); // Tipo de error: Nota fuera de rango [0.0 - 20.0]
             } catch (Exception e) {
-                System.out.println("🛑 ERROR INESPERADO: " + e.getMessage());
+                System.out.println("ERROR INESPERADO: " + e.getMessage());
                 manejarReingreso(0);
             }
         } 
@@ -76,7 +76,7 @@ public class Principal {
     // FUNCIONES DEL MENÚ
 
     private static void mostrarMenu() {
-        System.out.println("\n=== MENÚ PRINCIPAL DE LA UNIVERSIDAD ===");
+        System.out.println("\nMENÚ PRINCIPAL DE LA UNIVERSIDAD");
         System.out.println("1. Matricular Curso a Alumno");
         System.out.println("2. Registrar Nota de Curso");
         System.out.println("3. Registrar Matrícula (Demo)");
@@ -85,7 +85,7 @@ public class Principal {
     }
     
     private static void gestionarAlumno() throws ExcepcionDatoInvalido {
-        System.out.println("\n--- 1. MATRICULAR CURSO ---");
+        System.out.println("\n1. MATRICULAR CURSO");
         
         System.out.print("Ingrese CUI del alumno: ");
         if (!scanner.hasNextInt()) {
@@ -116,7 +116,7 @@ public class Principal {
     }
 
     private static void gestionarNotas() throws ExcepcionDatoInvalido {
-        System.out.println("\n--- 2. REGISTRAR NOTA ---");
+        System.out.println("\n2. REGISTRAR NOTA);
         
         System.out.print("Ingrese CUI del alumno: ");
         if (!scanner.hasNextInt()) {
@@ -158,7 +158,7 @@ public class Principal {
     }
     
     private static void gestionarMatricula() {
-        System.out.println("\n--- 3. GESTIÓN DE MATRÍCULA (DEMO) ---");
+        System.out.println("\n3. GESTIÓN DE MATRÍCULA");
         Alumno a = universidad.buscarAlumnoPorCUI(1001);
         Carrera c = universidad.listarSucursales().get(0).listarFacultades().get(0).listarCarreras().get(0);
         
@@ -174,7 +174,7 @@ public class Principal {
     }
 
     private static void mostrarReportes() {
-        System.out.println("\n--- 4. REPORTES DE ALUMNO (DEMO) ---");
+        System.out.println("\n4. REPORTES DE ALUMNO");
         Alumno a = universidad.buscarAlumnoPorCUI(1001);
         if (a != null) {
             a.mostrarInformacion();
@@ -191,25 +191,24 @@ public class Principal {
         }
     }
     
-    //-------------------------------------------------------------
     // MANEJO DE EXCEPCIONES: switch para reingreso
     
     private static void manejarReingreso(int tipoError) {
         System.out.println("\n====================================");
         switch (tipoError) {
             case 1:
-                System.out.println("🔄 Solicitud: Por favor, REINGRESE el CUI (Número entero).");
+                System.out.println("Solicitud: Por favor, REINGRESE el CUI (Número entero).");
                 break;
             case 2:
-                System.out.println("🔄 Solicitud: Por favor, REINGRESE la NOTA (Decimal entre 0.0 y 20.0).");
+                System.out.println("Solicitud: Por favor, REINGRESE la NOTA (Decimal entre 0.0 y 20.0).");
                 break;
             case 3:
-                System.out.println("🔄 Solicitud: Por favor, REINGRESE la OPCIÓN de Menú (Número entre 1 y 5).");
+                System.out.println("Solicitud: Por favor, REINGRESE la OPCIÓN de Menú (Número entre 1 y 5).");
                 break;
             default:
-                System.out.println("🔄 Solicitud: Error no específico. Volviendo al menú.");
+                System.out.println("Solicitud: Error no específico. Volviendo al menú.");
         }
-        System.out.println("====================================\n");
+        System.out.println("");
     }
 
     // DATOS DE EJEMPLO
@@ -224,8 +223,8 @@ public class Principal {
         universidad.agregarSucursal(s);
 
         // Crear alumnos
-        AlumnoPregrado ap = new AlumnoPregrado(1001, "Ana López", "ana.l@uni.edu", 3, 40, false);
-        AlumnoPosgrado apo = new AlumnoPosgrado(2001, "Pedro Díaz", "pedro.d@uni.edu", "Data Science", "Maestría", "Dr. Guzmán");
+        AlumnoPregrado ap = new AlumnoPregrado(1001, "Ana Mendoza", "ana.l@uni.edu", 3, 40, false);
+        AlumnoPosgrado apo = new AlumnoPosgrado(2001, "Samuel Diaz", "samuel.d@uni.edu", "Data Science", "Maestría", "Dr. Guzmán");
         c.agregarAlumno(ap);
         c.agregarAlumno(apo);
 
@@ -252,4 +251,5 @@ public class Principal {
         System.out.println("Datos de ejemplo cargados (Alumno 1001 y 2001, Cursos CS101, CS102, CS201).");
         System.out.println();
     }
+
 }
