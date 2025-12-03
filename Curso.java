@@ -27,7 +27,11 @@ public abstract class Curso {
     public String getCodigo() { 
         return codigo; 
     }
+    public int getCreditos() {
+        return creditos;
+    }
 
+    // FUNCION PARA PREREQUISITOS
     public void agregarPreRequisito(PreRequisito p) {
         this.preRequisitos.add(p);
     }
@@ -37,20 +41,22 @@ public abstract class Curso {
         return this.preRequisitos.removeIf(p -> p.getId().equals(id));
     }
 
-    public boolean cumpleRequisitos(Alumno a) {
+    // FUNCION PARA VERIFICAR REQUISITOS 
+    public boolean cumpleRequisitos(Alumno a, GestorNotas gestor) {
         for (PreRequisito p : preRequisitos) {
-            if (!p.verificarCumplimiento(a)) {
+            if (!p.verificarCumplimiento(a, gestor)) { 
                 return false;
             }
         }
         return true;
     }
 
+    // FUNCION PARA MOSTRAR INFORMACION
     public void mostrarInformacion() {
         System.out.println("Curso: " + nombre + " [" + codigo + "]");
         System.out.println("Créditos: " + creditos + ", Semestre: " + semestre);
     }
 
-    // Método abstracto para que las subclases definan cómo se calcula su nota final
+    // Método abstracto
     public abstract double calcularNotaFinal();
 }
