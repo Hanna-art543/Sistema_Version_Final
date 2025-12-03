@@ -1,7 +1,7 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Date; // Necesario para MatriculaEspecial
+import java.util.Date;
+import java.util.InputMismatchException;
+import java.util.Scanner; // Necesario para MatriculaEspecial
 
 public class Principal {
 
@@ -116,7 +116,7 @@ public class Principal {
     }
 
     private static void gestionarNotas() throws ExcepcionDatoInvalido {
-        System.out.println("\n2. REGISTRAR NOTA);
+        System.out.println("\n2. REGISTRAR NOTA");
         
         System.out.print("Ingrese CUI del alumno: ");
         if (!scanner.hasNextInt()) {
