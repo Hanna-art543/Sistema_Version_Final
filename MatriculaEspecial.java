@@ -1,5 +1,5 @@
 import java.util.Date;
-public class MatriculaEspecial extends matricula {
+public class MatriculaEspecial extends Matricula {
     private String tipoEspecial;
     private String documentoJustificacion;
     private Date fechaSolicitud;
